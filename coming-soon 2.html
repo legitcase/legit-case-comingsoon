@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Legit Case — Coming Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html, body { height: 100%; font-family: 'Barlow', sans-serif; -webkit-font-smoothing: antialiased; }
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Background image */
+.bg {
+  position: fixed;
+  inset: 0;
+  background-image: url('PHOTO-2026-06-16-21-59-40.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* Dark overlay so text is readable */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 15, 25, 0.78);
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 480px;
+  width: 100%;
+}
+
+.logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(3.5rem, 16vw, 6rem);
+  letter-spacing: 0.04em;
+  line-height: 0.9;
+  color: #ffffff;
+}
+.logo span { color: #e85a5a; }
+
+.tagline {
+  font-size: clamp(0.85rem, 3vw, 1rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #aacae6;
+}
+
+.divider {
+  width: 48px;
+  height: 2px;
+  background: #e85a5a;
+  border-radius: 2px;
+}
+
+.headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.6rem, 7vw, 2.4rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.subtext {
+  font-size: clamp(0.82rem, 3vw, 0.95rem);
+  color: rgba(255,255,255,0.6);
+  line-height: 1.75;
+  max-width: 360px;
+}
+
+.form-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.email-input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.07);
+  color: #ffffff;
+  font-family: 'Barlow', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+.email-input::placeholder { color: rgba(255,255,255,0.35); }
+.email-input:focus { border-color: #e85a5a; }
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  border: none;
+  background: #e85a5a;
+  color: #ffffff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(232,90,90,0.4);
+  transition: opacity 0.15s, transform 0.12s;
+}
+.submit-btn:active { opacity: 0.85; transform: scale(0.98); }
+
+.success-msg {
+  display: none;
+  background: rgba(232,90,90,0.12);
+  border: 1px solid rgba(232,90,90,0.35);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.success-msg.visible { display: block; }
+
+.privacy {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.25);
+  line-height: 1.6;
+}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="overlay"></div>
+
+<div class="page">
+  <div class="content">
+
+    <div class="logo">LEGIT<span>CA</span>SE</div>
+    <div class="tagline">The Courtroom Role-Playing Game</div>
+
+    <div class="divider"></div>
+
+    <div class="headline">Something big<br>is coming.</div>
+
+    <div class="subtext">
+      You think you're right? Soon you'll get to prove it. Legit Case is launching shortly — be the first to know.
+    </div>
+
+    <div class="form-wrap" id="form-wrap">
+      <input
+        class="email-input"
+        type="email"
+        id="email-input"
+        placeholder="Enter your email address"
+        autocomplete="email"
+      />
+      <button class="submit-btn" onclick="submitEmail()">Notify Me When We Launch</button>
+    </div>
+
+    <div class="success-msg" id="success-msg">
+      🎉 You're on the list! We'll let you know the moment Legit Case launches.
+    </div>
+
+    <div class="privacy">We will only use your email to notify you about the launch. No spam, ever.</div>
+
+  </div>
+</div>
+
+<script>
+const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfoj03XojahKXuILrjMnAe4FWKqTmnHNXl8fp9q0oNhBBq5QQ/formResponse";
+const EMAIL_ENTRY = "entry.1599743300";
+
+function submitEmail() {
+  const email = document.getElementById('email-input').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('email-input').focus();
+    document.getElementById('email-input').style.borderColor = '#e85a5a';
+    return;
+  }
+
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = FORM_URL;
+  form.target = 'hidden-frame';
+  form.style.display = 'none';
+
+  const input = document.createElement('input');
+  input.type = 'hidden';
+  input.name = EMAIL_ENTRY;
+  input.value = email;
+  form.appendChild(input);
+
+  document.body.appendChild(form);
+  form.submit();
+  document.body.removeChild(form);
+
+  document.getElementById('form-wrap').style.display = 'none';
+  document.getElementById('success-msg').classList.add('visible');
+}
+
+document.getElementById('email-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') submitEmail();
+});
+</script>
+
+<iframe name="hidden-frame" style="display:none;"></iframe>
+
+</body>
+</html>
